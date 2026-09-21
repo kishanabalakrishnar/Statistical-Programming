@@ -32,6 +32,8 @@ library(flextable)
 yrbss$Grade <- yrbss$grade
 yrbss$Gender <- yrbss$gender
 
+# Write more code
+
 z <- summarizor(
   yrbss[c("Grade", "Gender")],
   overall_label = NULL
