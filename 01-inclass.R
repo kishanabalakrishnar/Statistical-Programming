@@ -52,8 +52,8 @@ ft_1
 # no one correct way to do this
 # Ensure that the figure is clearly labeled and includes an appropriate legend
 
-aggregate(physically_active_7d ~ gender + grade, data = yrbss, FUN = mean) |> 
-  ggplot(aes(x = grade, y = physically_active_7d, group = gender, color = gender)) + 
+aggregate(physically_active_7d ~ Gender + Grade, data = yrbss, FUN = mean) |> 
+  ggplot(aes(x = Grade, y = physically_active_7d, group = Gender, color = Gender)) + 
   geom_line() + labs(x = "Grade", y = "Mean Number of Days Physically Active",
 title = "Average Number of Physically Active Days By Grade and Gender", color = "Gender")
 ...
@@ -63,9 +63,9 @@ title = "Average Number of Physically Active Days By Grade and Gender", color = 
 # among female students in grade 12 
 # Ensure that the figure is clearly labeled and includes an appropriate legend
 
-yrbss |> mutate(bmi = weight / (height^2)) |> filter(gender == "female" & grade == "12") |> 
+yrbss |> mutate(bmi = weight / (height^2)) |> filter(Gender == "Female" & Grade == "12") |> 
   ggplot(aes(x = factor(physically_active_7d), y = bmi)) + geom_boxplot() +
   labs(x = "Number of Physically Active Days", y = "Body Mass Index (BMI)",
-title = "Relationship Between Physical Activity and BMI\nAmong Female Students in Grade 12")
+title = "Relationship Between Physical Active Days and BMI\nAmong Female Students in Grade 12")
 
 # Push your completed code to your GitHub repository
