@@ -32,8 +32,6 @@ library(flextable)
 yrbss$Grade <- yrbss$grade
 yrbss$Gender <- yrbss$gender
 
-# Write more code
-
 z <- summarizor(
   yrbss[c("Grade", "Gender")],
   overall_label = NULL
@@ -52,9 +50,10 @@ ft_1
 # no one correct way to do this
 # Ensure that the figure is clearly labeled and includes an appropriate legend
 
-aggregate(xxx) |>
-  ggplot(aes(xxx)) + 
-  geom_line()
+aggregate(physically_active_7d ~ gender + grade, data = yrbss, FUN = mean) |> 
+  ggplot(aes(x = grade, y = physically_active_7d, group = gender, color = gender)) + 
+  geom_line() + labs(x = "Grade", y = "Mean Number of Days Physically Active",
+title = "Average Number of Physically Active Days By Grade and Gender", color = "Gender")
 ...
 
 
@@ -62,6 +61,9 @@ aggregate(xxx) |>
 # among female students in grade 12 
 # Ensure that the figure is clearly labeled and includes an appropriate legend
 
-
+yrbss |> mutate(bmi = weight / (height^2)) |> filter(gender == "female" & grade == "12") |> 
+  ggplot(aes(x = factor(physically_active_7d), y = bmi)) + geom_boxplot() +
+  labs(x = "Number of Physically Active Days", y = "Body Mass Index (BMI)",
+title = "Relationship Between Physical Activity and BMI\nAmong Female Students in Grade 12")
 
 # Push your completed code to your GitHub repository
