@@ -29,8 +29,10 @@ library(tidyverse)
 install.packages("flextable")
 library(flextable)
 
-yrbss$Grade <- yrbss$grade
-yrbss$Gender <- yrbss$gender
+yrbss$Grade <- factor(yrbss$grade, levels = c("9", "10", "11", "12", "other"), 
+labels = c("9", "10", "11", "12", "Other"))
+yrbss$Gender <- factor(yrbss$gender, levels = c("female", "male"),
+labels = c("Female", "Male"))
 
 z <- summarizor(
   yrbss[c("Grade", "Gender")],
